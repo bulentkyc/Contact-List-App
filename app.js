@@ -9,4 +9,4 @@ app.set('view engine', 'pug');
 
 app.use('/', router)
 
-app.listen(port, ()=>{`Server started on port: ${port}`});
+app.listen(port, ()=>{console.log(`Server started on port: ${port}`)});

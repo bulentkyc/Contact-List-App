@@ -1,3 +1,12 @@
+mixin contactCard(contact)
+    li.li.row
+        .float-left.col-11
+            img(src="public/uploads/avatars/" + contact.avatar)
+            h5= contact.name
+            .float-right= contact.email
+        .float-right.col-1 📨
+
+
 doctype html
 html
     head
@@ -63,3 +72,7 @@ html
                             input#avatar.custom-file-input(type='file', name='avatar', multiple='multiple')
                         .input-group
                             button.btn.btn-primary.btn-block(type='submit') Submit
+                div.container
+                    ul.col-xs-12.col-md-6.mx-auto.ul
+                        each value,index in contactData
+                            +contactCard(value)

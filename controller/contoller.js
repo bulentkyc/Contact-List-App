@@ -20,7 +20,7 @@ const upload = multer({
 }).single('avatar');
 
 exports.homeRoute = (req,res) => {
-    res.render('index');
+    res.render('index',{contactData: contactList});
 }
 
 exports.newContact = (req,res) => {
@@ -28,7 +28,7 @@ exports.newContact = (req,res) => {
         let newContact = {
             name: req.body.name,
             email: req.body.email,
-            avatar: req.body.avatar
+            avatar: fileName
         }
         contactList.push(newContact);
         console.log(contactList);
