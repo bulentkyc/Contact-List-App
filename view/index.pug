@@ -1,7 +1,7 @@
 mixin contactCard(contact)
     li.li.row
         .float-left.col-11
-            img(src="public/uploads/avatars/" + contact.avatar)
+            img(src="/uploads/avatars/" + contact.avatar)
             h5= contact.name
             .float-right= contact.email
         .float-right.col-1 📨
@@ -55,7 +55,7 @@ html
     body
         main    
             //-- input form --
-            div.container
+            div.container-fluid
                 row
                     h1.text-center Enter your contact
                     form.col-xs-12.col-md-6.mx-auto(action='/newContact', method='POST', enctype='multipart/form-data')
@@ -72,7 +72,7 @@ html
                             input#avatar.custom-file-input(type='file', name='avatar', multiple='multiple')
                         .input-group
                             button.btn.btn-primary.btn-block(type='submit') Submit
-                div.container
+                div.container-fluid
                     ul.col-xs-12.col-md-6.mx-auto.ul
                         each value,index in contactData
                             +contactCard(value)
