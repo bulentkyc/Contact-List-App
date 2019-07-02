@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const router = require('./controller/router');
+
 app.set('views', __dirname + '/view');
 app.set('view engine', 'pug');
 
-app.get('/', (req,res)=>{
-    res.render('index');
-});
+app.use('/', router)
 
 app.listen(port, ()=>{`Server started on port: ${port}`});

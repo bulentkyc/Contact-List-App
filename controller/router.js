@@ -4,4 +4,6 @@ const controller = require('./contoller');
 
 router.get('/', controller.homeRoute);
 
+router.post('/newContact', controller.newContact);
+
 module.exports = router;
