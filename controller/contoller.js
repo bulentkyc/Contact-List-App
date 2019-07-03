@@ -49,5 +49,11 @@ exports.newContact = (req,res) => {
 
  //This function gets the ID and delete contact from contactList array
 exports.deleteContact = (req,res) => {
-   
+    const {index} = req.params;
+    console.log(index);
+
+    contactList.splice(index,1);
+
+    res.redirect('/');
+
 }

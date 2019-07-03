@@ -6,6 +6,6 @@ router.get('/', controller.homeRoute);
 
 router.post('/newContact', controller.newContact);
 
-router.post('/deleteContact', controller.deleteContact);
+router.get('/deleteContact/:index', controller.deleteContact);
 
 module.exports = router;
