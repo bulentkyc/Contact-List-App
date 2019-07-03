@@ -1,5 +1,6 @@
 const multer = require('multer');
 const path = require('path');
+const jimp = require('jimp');
 
 let contactList = [];
 let fileName = '';
@@ -33,9 +34,20 @@ exports.newContact = (req,res) => {
         contactList.push(newContact);
         console.log(contactList);
 
-        //On here we will process the image for resizing
-
+        //On here we will process the image resizing
+        jimp.read('public/uploads/avatars/' + fileName, (err, file) => {
+            if(err) throw err;
+            file
+                .resize(250,250) //resize
+                .quality(60) // set the quality of image
+                .write('public/uploads/avatars/' + fileName); //save
+        });
         res.redirect('/');
     });
 
+}
+
+ //This function gets the ID and delete contact from contactList array
+exports.deleteContact = (req,res) => {
+   
 }
