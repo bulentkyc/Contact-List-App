@@ -59,47 +59,7 @@ html
     body
         main    
             // Modal
-            #emailModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalCenterTitle', aria-hidden='true')
-                .modal-dialog.modal-dialog-centered(role='document')
-                    .modal-content
-                        .modal-header
-                            #modalHeader.modal-title
-                            button.close(type='button', data-dismiss='modal', aria-label='Close')
-                                span(aria-hidden='true') ×
-                        .modal-body
-                            form.container(action='/sendMail', method='POST', enctype='multipart/form-data')
-                                .input-group.mb-2
-                                    .input-group-prepend
-                                        .input-group-text to
-                                    input#to.form-control(type='email', name='to', readonly='')
-                                .input-group.mb-2
-                                    .input-group-prepend
-                                        .input-group-text @
-                                    input.form-control(type='email', name='cc', placeholder='CC address')
-                                .input-group.mb-2
-                                    .input-group-prepend
-                                        .input-group-text ...
-                                    input.form-control(type='text', name='subject', placeholder='Mail Subject')
-                                .input-group.mb-2
-                                    textarea.form-control(rows='3', name='message')
-                                .input-group.mb-2
-                                    label.custom-file-label(for='avatar') Choose File
-                                    input#attach.custom-file-input(type='file', name='attach')
-                                hr
-                                #userDiv.input-group.mb-2
-                                    .input-group-prepend
-                                        .input-group-text @
-                                    input.form-control(type='email', name='user', placeholder='Your G-mail address')
-                                #passDiv.input-group.mb-2
-                                    .input-group-prepend
-                                        .input-group-text  * 
-                                    input.form-control(type='password', name='pass', placeholder='Your G-mail password')
-                                hr
-                                .input-group.mb-2
-                                    button.btn.btn-primary.btn-block(type='submit') Send
-                        .modal-footer
-                            p.text-center.m-auto © 2019 Bülent Kayici
-
+            include mail.pug
             // Create contact list form
             div.container-fluid
                 row
