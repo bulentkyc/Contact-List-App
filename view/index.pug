@@ -1,6 +1,6 @@
-- var gArrIndex
+
 mixin contactCard(contact, arrIndex)
-    - var gArrIndex=arrIndex
+    
     li.li.row
         .float-left.col-10.align-center.d-flex.align-items-center.justify-content-between
             img(src="/uploads/avatars/" + contact.avatar).float-left
@@ -87,7 +87,10 @@ html
         script.
             let mailPopUp = (photo, name, mail) => {
             $('#to').val(mail);
-            $('#modalHeader').val(name);
+            $('#modalHeader').text(name);
+            $('#userImg').attr('src',"/uploads/avatars/" + photo);
+            
+            
             console.log(name)
             }
 
