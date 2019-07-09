@@ -1,7 +1,8 @@
 const multer = require('multer');
 const path = require('path');
 const jimp = require('jimp');
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
+
 
 let contactList = [];
 let fileName = '';
@@ -35,7 +36,7 @@ const attachStorager = multer.diskStorage({
 //init upload for email
 const attachUpload = multer({
     storage: attachStorager
-}).single('avatar');
+}).single('attach');
 
 exports.homeRoute = (req,res) => {
     res.render('index',{contactData: contactList});
@@ -94,8 +95,8 @@ exports.sendMail = (req, res) => {
             subject: req.body.subject, // Subject line
             html: "<b>"+req.body.message+"</b>", // html body
             attachments: [{
-                filename:attachUpload,
-                path: 'public/uploads/attachments'
+                filename:fileName,
+                path: 'public/uploads/attachments/' + fileName
             }]
         };
 
