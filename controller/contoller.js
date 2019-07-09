@@ -2,6 +2,7 @@ const multer = require('multer');
 const path = require('path');
 const jimp = require('jimp');
 const nodemailer = require('nodemailer');
+const contacts = require('../model/contacts');
 
 
 let contactList = [];
@@ -46,9 +47,15 @@ exports.newContact = (req,res) => {
     upload(req, res, () => {
         let newContact = {
             name: req.body.name,
-            email: req.body.email,
+            mail: req.body.email,
             avatar: fileName
         }
+        //mongo goes here...
+        contacts.create(newContact,(err,contacts)=>{
+            if(err) concole.log(err);
+            else console.log(`Congrads! Your new contact inserted:${newContact}`);
+        });
+
         contactList.push(newContact);
         console.log(contactList);
 
