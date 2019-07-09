@@ -1,0 +1,26 @@
+// Modal
+#editModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalCenterTitle', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered(role='document')
+        .modal-content
+            .modal-header
+                img.userImg.float-left
+                h5.name.modal-title.text-primary
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+            .modal-body
+                form.col-xs-12.col-md-10.mx-auto(action='/newContact', method='POST', enctype='multipart/form-data')
+                    .input-group.mb-1
+                        .input-group-prepend
+                        .input-group-text ...
+                        input.name.form-control(type='text', name='name', placeholder="Enter your contact's name")
+                    .input-group.mb-1
+                        .input-group-prepend
+                        .input-group-text @
+                        input.mail.form-control(type='email', name='email', placeholder="Enter your contact's e-mail")
+                    .input-group.mb-1
+                        label.custom-file-label(for='avatar') Choose file
+                        input#avatar.custom-file-input(type='file', name='avatar', multiple='multiple')
+                    .input-group
+                        button.btn.btn-primary.btn-block(type='submit') Submit
+            .modal-footer
+                h5.text-center.m-auto.text-primary © 2019 Bülent Kayici

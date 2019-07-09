@@ -40,7 +40,14 @@ const attachUpload = multer({
 }).single('attach');
 
 exports.homeRoute = (req,res) => {
-    res.render('index',{contactData: contactList});
+    contacts.find({},(err, result)=>{
+        if (err) {
+            console.log(err);       
+        } else {
+            res.render('index',{contactData: result});
+        }
+    });
+    
 }
 
 exports.newContact = (req,res) => {
@@ -53,7 +60,7 @@ exports.newContact = (req,res) => {
         //mongo goes here...
         contacts.create(newContact,(err,contacts)=>{
             if(err) concole.log(err);
-            else console.log(`Congrads! Your new contact inserted:${newContact}`);
+            else console.log(`Congrads! Your new contact inserted:${JSON.stringify(newContact)}`);
         });
 
         contactList.push(newContact);
