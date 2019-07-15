@@ -8,7 +8,8 @@
                 button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') ×
             .modal-body
-                form.col-xs-12.col-md-10.mx-auto(action='/newContact', method='POST', enctype='multipart/form-data')
+                form.col-xs-12.col-md-10.mx-auto(action='/updateContact', method='POST', enctype='multipart/form-data')
+                    input(name='id').idOfContact(hidden)
                     .input-group.mb-1
                         .input-group-prepend
                         .input-group-text ...

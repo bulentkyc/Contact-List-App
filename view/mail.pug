@@ -3,8 +3,8 @@
     .modal-dialog.modal-dialog-centered(role='document')
         .modal-content
             .modal-header
-                img#userImg.float-left
-                h5#modalHeader.modal-title.text-primary
+                img.userImg.float-left
+                h5.name.modal-title.text-primary
                 button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') ×
             .modal-body
@@ -12,7 +12,7 @@
                     .input-group.mb-2
                         .input-group-prepend
                             .input-group-text to
-                        input#to.form-control(type='email', name='to', readonly='')
+                        input.mail.form-control(type='email', name='to', readonly='')
                     .input-group.mb-2
                         .input-group-prepend
                             .input-group-text @

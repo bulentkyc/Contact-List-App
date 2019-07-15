@@ -10,4 +10,6 @@ router.get('/deleteContact/:index', controller.deleteContact);
 
 router.post('/sendMail', controller.sendMail);
 
+router.post('/updateContact', controller.updateContact);
+
 module.exports = router;

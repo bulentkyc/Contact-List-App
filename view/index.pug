@@ -1,5 +1,5 @@
 
-mixin contactCard(contact, arrIndex)
+mixin contactCard(contact)
     
     li.li.row
         .float-left.col-9.align-center.d-flex.align-items-center.justify-content-between
@@ -9,9 +9,9 @@ mixin contactCard(contact, arrIndex)
         .col-1.text-center
             a.d-flex.align-items-center.col-1(pato=arrIndex href='/deleteContact/' + arrIndex) ❌
         .col-1.text-center
-            a(onclick='mailPopUp("'+contact.avatar +'","'+contact.name+'","'+contact.mail+ '")', pato=arrIndex, data-toggle='modal', data-target='#emailModal') ✉
+            a(onclick='mailPopUp("'+contact.avatar +'","'+contact.name+'","'+contact.mail+ '")', pato=contact.id, data-toggle='modal', data-target='#emailModal') ✉
         .col-1.text-center
-            a(onclick='mailPopUp("'+contact.avatar +'","'+contact.name+'","'+contact.mail+ '")', pato=arrIndex, data-toggle='modal', data-target='#editModal') ✏
+            a(onclick='mailPopUp("'+contact.id +'","'+contact.avatar +'","'+contact.name+'","'+contact.mail+ '")', pato=contact.id, data-toggle='modal', data-target='#editModal') ✏
 
 
 
@@ -89,11 +89,11 @@ html
                         each value,index in contactData
                             +contactCard(value, index)
         script.
-            let mailPopUp = (photo, name, mail) => {
+            let mailPopUp = (id,photo, name, mail) => {
             $('.mail').val(mail);
             $('.name').text(name).val(name);
             $('.userImg').attr('src',"/uploads/avatars/" + photo);
-            
+            $('.idOfContact').val(id);
             
             console.log(name)
             }

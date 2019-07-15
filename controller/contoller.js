@@ -128,3 +128,30 @@ exports.sendMail = (req, res) => {
         
     });
 }
+
+exports.updateContact = (req,res) => {
+    upload(req, res, () => {
+        console.log(req.body)
+        
+        //mongo goes here...
+        contacts.updateOne({_id:req.body.id},{
+            name: req.body.name,
+            mail: req.body.email,
+            avatar: fileName
+        },
+        (err,result)=>{
+            if(err) console.log(err);
+            else console.log(result);
+        });
+
+        //On here we will process the image resizing
+        jimp.read('public/uploads/avatars/' + fileName, (err, file) => {
+            if(err) throw err;
+            file
+                .resize(250,250) //resize
+                .quality(60) // set the quality of image
+                .write('public/uploads/avatars/' + fileName); //save
+        });
+        res.redirect('/');
+    });
+}
