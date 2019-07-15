@@ -7,7 +7,7 @@ mixin contactCard(contact)
             h5.m-0= contact.name
             div= contact.mail
         .col-1.text-center
-            a.d-flex.align-items-center.col-1(pato=arrIndex href='/deleteContact/' + arrIndex) ❌
+            a.d-flex.align-items-center.col-1(pato=arrIndex href='/deleteContact/' + contact.id) ❌
         .col-1.text-center
             a(onclick='mailPopUp("'+contact.id +'","'+contact.avatar +'","'+contact.name+'","'+contact.mail+ '")', pato=contact.id, data-toggle='modal', data-target='#emailModal') ✉
         .col-1.text-center

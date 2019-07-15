@@ -6,7 +6,7 @@ router.get('/', controller.homeRoute);
 
 router.post('/newContact', controller.newContact);
 
-router.get('/deleteContact/:index', controller.deleteContact);
+router.get('/deleteContact/:id', controller.deleteContact);
 
 router.post('/sendMail', controller.sendMail);
 

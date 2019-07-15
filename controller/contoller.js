@@ -52,6 +52,19 @@ exports.homeRoute = (req,res) => {
 
 exports.newContact = (req,res) => {
     upload(req, res, () => {
+        //check if there is a photo
+        if (fileName == null || fileName == undefined || fileName == '') {
+            fileName = 'av.default.png';
+        } else {
+            //On here we will process the image resizing
+            jimp.read('public/uploads/avatars/' + fileName, (err, file) => {
+                if(err) throw err;
+                file
+                    .resize(250,250) //resize
+                    .quality(60) // set the quality of image
+                    .write('public/uploads/avatars/' + fileName); //save
+            });
+        }
         let newContact = {
             name: req.body.name,
             mail: req.body.email,
@@ -66,14 +79,6 @@ exports.newContact = (req,res) => {
         contactList.push(newContact);
         console.log(contactList);
 
-        //On here we will process the image resizing
-        jimp.read('public/uploads/avatars/' + fileName, (err, file) => {
-            if(err) throw err;
-            file
-                .resize(250,250) //resize
-                .quality(60) // set the quality of image
-                .write('public/uploads/avatars/' + fileName); //save
-        });
         res.redirect('/');
     });
 
@@ -81,10 +86,14 @@ exports.newContact = (req,res) => {
 
  //This function gets the ID and delete contact from contactList array
 exports.deleteContact = (req,res) => {
-    const {index} = req.params;
-    console.log(index);
+    //const {id} = req.params;
+    //console.log(id);
 
-    contactList.splice(index,1);
+    contacts.findOneAndRemove({_id:req.params.id},
+    (err,result)=>{
+        if(err) console.log(err);
+        else console.log(result);
+    });
 
     res.redirect('/');
 
